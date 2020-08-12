@@ -1,14 +1,50 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Page Title</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script>
+    <meta charset="utf-8">
+    <title>Single AJAX</title>
 </head>
+
 <body>
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        // constructing a queryURL variable we will use instead of the literal string inside of the ajax method
+        var ticker = "SBUX";
+        //var queryURL = "https://www.goodreads.com/search/?key=6BGr7oVjksnowvgdRzsg&q=" + title;
+        var queryURL = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" + ticker + "&apikey=1R7O28U5BHPJZSE7"
+        $.ajax({
+            url: queryURL,
+            method: "GET",
+    }).then(function (res) {
+                console.log(res);
+                console.log(res['Global Quote']['01. symbol']);
+                console.log("open: " + res['Global Quote']['02. open']);
+                console.log("high: " + res['Global Quote']['03. high']);
+                console.log("low: " + res['Global Quote']['04. low']);
+                console.log("last trading day: " + res['Global Quote']['07. latest trading day']);
+
+            });
+//             var mykey
+//             var queryPicsURL = "https://autocomplete.clearbit.com/v1/companies/suggest?query=:starbucks"
+//         $.ajax({
+//             url: queryPicsURL,
+//             method: "GET",
+//     }).then(function (res) {
+//                 console.log(res);
+//                 console.log(res.Runtime);
+//             });
+// // ---------------------------------------------------------
+    </script>
+
 </body>
+
 </html>
+
+<!-- https://www.goodreads.com/api
+key: 6BGr7oVjksnowvgdRzsg
+secret: 3kkfZpuNd0bZicx0AwwB202vhxlBBU4tqaimzRiTOk
+https://www.goodreads.com/api/documentation
+https://www.goodreads.com/search.xml?key=6BGr7oVjksnowvgdRzsg&q=Black+Boy -->
+<!-- 
+https://www.goodreads.com/search.xml?key=6BGr7oVjksnowvgdRzsg&q=Black+Boy -->
