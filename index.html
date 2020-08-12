@@ -1,4 +1,41 @@
 <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Single AJAX</title>
+</head>
+
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        // constructing a queryURL variable we will use instead of the literal string inside of the ajax method
+        var ticker = "SBUX";
+        //var queryURL = "https://www.goodreads.com/search/?key=6BGr7oVjksnowvgdRzsg&q=" + title;
+        var queryURL = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" + ticker + "&apikey=1R7O28U5BHPJZSE7"
+        $.ajax({
+            url: queryURL,
+            method: "GET",
+    }).then(function (res) {
+                console.log(res);
+                console.log(res['Global Quote']['01. symbol']);
+                console.log("open: " + res['Global Quote']['02. open']);
+                console.log("high: " + res['Global Quote']['03. high']);
+                console.log("low: " + res['Global Quote']['04. low']);
+                console.log("last trading day: " + res['Global Quote']['07. latest trading day']);
+
+            });
+//             var mykey
+//             var queryPicsURL = "https://autocomplete.clearbit.com/v1/companies/suggest?query=:starbucks"
+//         $.ajax({
+//             url: queryPicsURL,
+//             method: "GET",
+//     }).then(function (res) {
+//                 console.log(res);
+//                 console.log(res.Runtime);
+//             });
+// // ---------------------------------------------------------
+    </script>
 <html lang="">
     <head>
         <meta charset="utf-8">
@@ -76,5 +113,3 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="script.js"></script>
-</body>
-</html>
