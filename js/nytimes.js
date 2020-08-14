@@ -8,7 +8,7 @@ $.get(query, function (data, status) {
     for (let i = 0; i < data.response.docs.length; i++){
         console.log("Read This Article: " + data.response.docs[i])
         var newsResult = ("Read This: " + data.response.docs[i].abstract)
-        var newsResultDiv = $('<div>').text(newsResult)
+        var newsResultDiv = $('<p>').text(newsResult)
         $('#newsArticles').append(newsResultDiv)
     }
 
