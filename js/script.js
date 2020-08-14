@@ -1,5 +1,4 @@
 var ticker = "SBUX";
-//var queryURL = "https://www.goodreads.com/search/?key=6BGr7oVjksnowvgdRzsg&q=" + title;
 var queryURL = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" + ticker + "&apikey=1R7O28U5BHPJZSE7"
 $.ajax({
     url: queryURL,
