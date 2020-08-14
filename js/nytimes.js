@@ -1,4 +1,4 @@
-var q = "appl"; // or user input
+var q = "aapl"; // or user input
 var fq = "business";
 var apiKey = "0xtfC1lrtqDdKvSdw4AW74VGe87ACQAb";
 var query = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + q + "&fq=" + fq + "&api-key=" + apiKey;
