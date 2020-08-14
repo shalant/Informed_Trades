@@ -5,3 +5,5 @@ if (price > open) {
 } else {
    $("#currentPrice").addClass("down");
 }
+
+// .toFixed(2)
