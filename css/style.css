@@ -45,3 +45,19 @@ body {
 #articles {
    color: #3273dc;
 }
+
+#companyName {
+   font-size: 350%;
+   color: #00d1b2;
+   font-family: 'Roboto Mono', monospace;
+   text-transform: uppercase;
+}
+
+#newsArticles {
+   font-family: 'Raleway', sans-serif;
+   font-size: 95%;
+}
+
+#arrow {
+   margin-top: 1em;
+}
