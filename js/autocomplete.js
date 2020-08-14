@@ -3437,6 +3437,10 @@ $(function() {
         
     ];
     $('#userInput').autocomplete({
-      source: availableTickers
+      minLength: 1,
+      source: function(request, response) {
+        var results = $.ui.autocomplete.filter(availableTickers, request.term);
+        response(results.slice(0, 10));
+      }
     });
   } );
