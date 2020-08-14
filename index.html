@@ -5,27 +5,26 @@
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>Stock Info and News</title>
-      <!-- <link re="stylesheet" href="css/style.css"> -->
+  
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.0/css/bulma.css"/>
-      <link rel="stylesheet" href="./css/override.css"/>
-      <link href="https://fonts.googleapis.com/css2?family=Antic+Slab&family=Roboto:wght@500&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
 <!-- Header ------>
-    <div class= "container is-desktop notification is-white" id="total">
+    <div class= "container is-desktop" id="total">
       <div class= "container is-fluid"> 
         <div class="tile is-parent">
-          <article class="tile is-perent notification is-primary">
-            <p class="title"><strong>Stock Information and News App</strong></p>
+          <article class="tile is-parent notification is-primary">
+            <p class="title" id="title">Stock Information and News App</p>
           </article>
         </div>
       </div>
 <!-- Search box ------>
       <div class= "container is-fluid" id= "container"> 
         <div class="tile is-ancestor">
-          <div class="tile is-parent is-warning">
+          <div class="tile is-parent">
             <article class="tile is-child box notification is-primary">
-              <p class="title">Search</p>
               <div class="field">
                 <div class="control">
                   <input class="input is-info" type="text" id="userInput" placeholder="Enter Stock Symbol">
@@ -37,7 +36,7 @@
 <!-- Company Name ------>
           <div class="tile is-parent is-info">
             <article class="tile is-child box notification is-info">
-              <p class="title">Company Name</p>
+              <p class="title">Company</p>
               <div id="companyName"></div>
             </article>
           </div>
@@ -49,44 +48,32 @@
               </article>
           </div>
         </div>
-<!-- Image and/or Graph --->
-        <div class="tile is-ancestor">
-          <div class="tile is-vertical">
-            <div class="tile">
-              <div class="tile is-parent is-vertical">
-                <article id= "graph" class="tile is-child box notification is-info">
-                  <p class="title">Image/graph</p>
-                  <figure class="image is-4by3">
-                      <img src="https://bulma.io/images/placeholders/640x480.png">
-                    </figure>
-                </article>
-<!-- Previous Searches --->
-                <article class="tile is-child box notification is-primary">
-                  <p class="title">Previous Searches</p>
-                  <div id = "previousSearches"></div>
-                </article>
-              </div>
-<!-- data box -->
-              <div class="tile is-parent">
-                <article class="tile is-child box notification is-info">
-                  <p class="title">Data</p>
-                  <div id="data"></div>
-                </article>
-              </div>
-            </div>  
-          </div>
+      <div class="tile is-ancestor">
+        <div class="tile is-vertical">
+          <div class="tile">    
 <!-- News articles ------>
-          <div class="tile is-parent">
-            <article class="tile is-child box notification is-light">
-              <div class="content">
-                <p class="title">News Articles</p>
-                <div id= "newsArticles"></div>
-              </div>
-            </article>
+            <div class="tile is-parent is-9">
+              <article class="tile is-child box notification is-light">
+                <div class="content">
+                  <p class="title" id="articles">News Articles</p>
+                  <div id = "newsArticles"></div>
+                </div>
+              </article>
+            </div>
+<!-- data box ------>            
+            <div class="tile is-parent is-3">
+              <article class="tile is-child box notification is-info">
+                <p class="title">Data</p>
+                <div id="data"></div>
+                <figure class="image is-64x64">
+                  <img id="arrow" src="">
+                </figure>
+              </article>
+            </div>
           </div>
-        </div>
-
+        </div>  
       </div>
+     </div>
     </div> 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="js/script.js"></script>
