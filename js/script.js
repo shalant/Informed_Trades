@@ -24,5 +24,6 @@ $.ajax({
     dataPointPrice.append(price)
     $('#data').append(dataPoint)
     $('#currentPrice').append(dataPointPrice)
+    
 })
 

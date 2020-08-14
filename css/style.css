@@ -1,0 +1,47 @@
+
+/* whole page ------------------------------ */
+body {
+   background-image: linear-gradient( white, #00d1b2);
+}
+/* classees -------------------------------- */
+.title {
+   font-family: 'Raleway', sans-serif;
+   font-weight: 700;
+}
+
+.button.is-info {
+   margin-top: 1em;
+}
+
+.up {
+   color: #0eeb37;
+}
+
+.down {
+  color: red;
+}
+
+.containter.is-desktop { 
+   max-width: 1200px;
+   min-width: 600x;
+}
+
+/* IDs -------------------------------------- */
+
+#currentPrice {
+   font-size: 300%;
+   font-family: 'Roboto Mono', monospace;
+   }
+
+#data {
+   font-family: 'Roboto Mono', monospace;
+}   
+
+#border {
+   border-color: blue;
+   border-width: 1em;
+}
+
+#articles {
+   color: #3273dc;
+}
