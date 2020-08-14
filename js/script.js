@@ -1,4 +1,6 @@
 var stockSearch = document.querySelector('#searchButton');
+var fq = "business";
+var apiKey = "0xtfC1lrtqDdKvSdw4AW74VGe87ACQAb";
 
 function getStockInfo(ticker) {
     var queryURL = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" + ticker + "&apikey=1R7O28U5BHPJZSE7"
@@ -7,6 +9,8 @@ function getStockInfo(ticker) {
       url: queryURL,
       method: "GET",
     }).then(function (res) {
+      $('#currentPrice').empty();
+      $('#data').empty();
       console.log(res);
         var dataPoint = $('<div>')
         var dataPointPrice = $('<div>')
@@ -30,6 +34,23 @@ function getStockInfo(ticker) {
       });
 }
 
+function getStockNews(ticker){
+  var query = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + ticker + "&fq=" + fq + "&api-key=" + apiKey;
+  $.get(query, function (data, status) {
+      $('#newsArticles').empty();
+      var newsUrl = (data.response.docs[0].web_url)
+      console.log(data);
+      console.log(data.response.docs.length);
+      console.log(data.response.docs[0].web_url);
+      for (let i = 0; i < data.response.docs.length; i++){
+          console.log("Read This Article: " + data.response.docs[i])
+          var newsResult = ("Read This: " + data.response.docs[i].abstract)
+          var newsResultDiv = $('<div>').text(newsResult).append('<a href="' + newsUrl + '">Read More...</a>')
+          $('#newsArticles').append(newsResultDiv)
+      }
+  });
+}
+
 $(stockSearch).on('click', function (event) {
     // Preventing the button from trying to submit the form
     console.log('Search Button Clicked');
@@ -39,4 +60,5 @@ $(stockSearch).on('click', function (event) {
     console.log(ticker);
 
     getStockInfo(ticker);
+    getStockNews(ticker);
 });
