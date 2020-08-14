@@ -26,6 +26,7 @@ function getStockInfo(ticker) {
         dataPointPrice.append(price)
         $('#data').append(dataPoint)
         $('#currentPrice').append(dataPointPrice)
+
       });
 }
 
