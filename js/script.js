@@ -78,7 +78,7 @@ $(stockSearch).on('click', function (event) {
   event.preventDefault();
   // Getting ticker symbol from search input field
   var ticker = $('#userInput').val().trim();
-
+  $("#arrow").empty();
   getStockInfo(ticker);
   getStockNews(ticker);
 });

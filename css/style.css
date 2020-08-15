@@ -1,11 +1,14 @@
 
 /* whole page ------------------------------ */
 html{
-   height:100%;
+   position: relative;
+   min-height: 100%;
+   background-color:#00d1b2;
 }
 body {
    background-image: linear-gradient( white, #00d1b2);
    min-height:100%;
+   margin-bottom: 60px;
 }
 /* classees -------------------------------- */
 .title {
@@ -28,6 +31,23 @@ body {
 .containter.is-desktop { 
    max-width: 1200px;
    min-width: 600px;
+}
+
+.helpLink a {
+   font-size:.75em; color:#222; text-decoration:underline;float:right;
+}
+.footer {
+   position: absolute;
+   bottom: 0;
+   width: 100%;
+   height: 60px;
+   line-height: 30px;
+   background-color: #f5f5f5;
+   padding:0;
+   text-align: center;
+}
+.attribute {
+   font-size:.75em;color:#999;
 }
 
 /* IDs -------------------------------------- */
@@ -72,4 +92,8 @@ body {
 
 #arrow {
    margin-top: 1em;
+}
+
+#userInput {
+   background: #fff url(../assets/market.png) no-repeat right center;
 }
