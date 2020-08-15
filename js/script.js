@@ -86,7 +86,15 @@ $(stockSearch).on('click', function (event) {
   event.preventDefault();
   // Getting ticker symbol from search input field
   var ticker = $('#userInput').val().trim();
-  $("#arrow").empty();
+  // $("#arrow").empty();
   getStockInfo(ticker);
   getStockNews(ticker);
+});
+
+  var input = document.getElementById("userInput");
+input.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+   event.preventDefault();
+   document.getElementById("searchButton").click();
+  }
 });
