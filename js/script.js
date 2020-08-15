@@ -73,8 +73,9 @@ function getStockNews(ticker){
           var newsResult = (data.response.docs[i].abstract)
           var headline = (data.response.docs[i].headline.main)
           console.log(headline)
+          // Creating news articles
           var newsresultDiv = $('<h3>').text(headline)
-          var newsResultP = $('<p>').text(newsResult).append('<a href="' + newsUrl + '"> Read More...</a>')
+          var newsResultP = $('<p class="newsArticle">').text(newsResult).append('<a href="' + newsUrl + '"> Read More...</a>')
           $('#newsArticles').append(newsresultDiv, newsResultP)
       }
   });
