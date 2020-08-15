@@ -1,17 +1,18 @@
-Name: Welcome to StockApp, the next big thing in investing.
+Project Title: Welcome to Informed Trades, the next big thing in investing.
 
-StockApp allows users to closely track ticker symbols in their portfolio, providing basic info as well as contemporary news stories.
+Informed Trades empower users by combining basic stock info with contemporary news stories.
 
-Installation instructions: download from HERE
+Installation instructions: download from https://github.com/joolyen/Informed_Trades
 
-How to use: enter the ticker symbol in the data field, and viola, you can learn important information about your securities.
+Code style: we used html, css, and javascript. We found great success using the Bulma styling library.
+
+How to use: enter the ticker symbol in the data field, and viola, you can learn important information about your holdings.
 
 Support: reach out to doug.rosenberg@gmail.com for support requests. Typical response times are 3-5 minutes.
 
 Future updates:
-1) refinement of graphs
-2) refinement of news search functionality
-3) more stuff here
+1) adding a graph feature would be nice
+2) get search bar to accept both ticker symbol and company name
 
 Authors and acknowledgement:
 Caroline Twyman, Julian Ivey, Jon Misner, and Doug Rosenberg
