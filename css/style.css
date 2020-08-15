@@ -30,7 +30,7 @@ body {
 
 .containter.is-desktop { 
    max-width: 1200px;
-   min-width: 600x;
+   min-width: 600px;
 }
 
 .helpLink a {
@@ -51,6 +51,10 @@ body {
 }
 
 /* IDs -------------------------------------- */
+#total {
+   max-width: 1200px;
+   min-width: 400px;
+}
 
 #currentPrice {
    font-size: 300%;
@@ -62,7 +66,7 @@ body {
 }   
 
 #border {
-   border-color: blue;
+   border-color:#3273dc;
    border-width: 1em;
 }
 

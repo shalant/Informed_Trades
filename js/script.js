@@ -1,8 +1,10 @@
+//set global variables for use later
 var stockSearch = document.querySelector('#searchButton');
 var fq = "business";
 var nytApiKey = "0xtfC1lrtqDdKvSdw4AW74VGe87ACQAb";
 var alphaAPIKey = "1R7O28U5BHPJZSE7";
 
+//API call for alphavantage
 function getStockInfo(ticker) {
   var queryURL = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" + ticker + "&apikey=" + alphaAPIKey
  
@@ -13,20 +15,28 @@ function getStockInfo(ticker) {
       $('#currentPrice').empty();
       $('#data').empty();
       $('#companyName').empty();
-      
-    var dataPoint = $('<div>')
-    var dataPointPrice = $('<div>')
-    var symbol = $('<p>').text("Ticker: " + res['Global Quote']['01. symbol']);
-    var open = $('<p>').text("Open: $" + res['Global Quote']['02. open']);
-    var high = dataPoint.text(("High: $" + res['Global Quote']['03. high']));
-    var low = $('<p>').text("Low: $" + res['Global Quote']['04. low']);
-    var price = $('<p>').text("$"+res['Global Quote']['05. price']);
-    var lastTradingDay = $('<p>').text("Last Trading Day: " + res['Global Quote']['07. latest trading day']);
-    dataPoint.append(symbol, open, high, low, lastTradingDay);
-    dataPointPrice.append(price);
-    $('#data').append(dataPoint);
-    $('#currentPrice').append(dataPointPrice);
-    if (price > open) {
+      $('#arrow').empty()
+
+      console.log(res);
+        var dataPoint = $('<div>')
+        var dataPointPrice = $('<div>')
+        var symbol = $('<p>').text("Ticker: " + res['Global Quote']['01. symbol']);
+        console.log(res['Global Quote']['01. symbol']);
+        var open = $('<p>').text("Open: $" + res['Global Quote']['02. open']);
+        console.log("open: " + res['Global Quote']['02. open']);
+        var high = dataPoint.text(("High: $" + res['Global Quote']['03. high']));
+        console.log("high: " + res['Global Quote']['03. high']);
+        var low = $('<p>').text("Low: $" + res['Global Quote']['04. low']);
+        console.log("price: " + res['Global Quote']['04. low']);
+        var price = $('<p>').text("$"+res['Global Quote']['05. price']);
+        console.log("current price: " + res['Global Quote']['05. price']);
+        var lastTradingDay = $('<p>').text("Last Trading Day: " + res['Global Quote']['07. latest trading day']);
+        console.log("last trading day: " + res['Global Quote']['07. latest trading day']);
+        dataPoint.append(symbol,open,high,low,lastTradingDay);
+        dataPointPrice.append(price);
+        $('#data').append(dataPoint);
+        $('#currentPrice').append(dataPointPrice);
+        if ((res['Global Quote']['05. price']) > (res['Global Quote']['02. open'])) {
           $("#currentPrice").addClass("up");
           $("#arrow").append('<img id="greenArrow" src="assets/upArrow.png"/>');
        } else {
@@ -48,12 +58,13 @@ function getStockInfo(ticker) {
 });
 }
 
+//nytimes API call
 function getStockNews(ticker){
   var query = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + ticker + "&fq=" + fq + "&api-key=" + nytApiKey;
   $.get(query, function (data, status) {
       $('#newsArticles').empty();
       var newsUrl = (data.response.docs[0].web_url)
-      for (let i = 0; i < data.response.docs.length; i++){
+      for (let i = 0; i < 5; i++){
           var newsResult = (data.response.docs[i].abstract)
           var headline = (data.response.docs[i].headline.main+": ")
           var newsResultDiv = $('<p>').text(newsResult).append('<a href="' + newsUrl + '"> Read More...</a>')
