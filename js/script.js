@@ -20,23 +20,28 @@ function getStockInfo(ticker) {
       console.log(res);
         var dataPoint = $('<div>')
         var dataPointPrice = $('<div>')
-        var symbol = $('<p>').text("Ticker: " + res['Global Quote']['01. symbol']);
+        var symbol = $('<p>').html("Ticker: " + res['Global Quote']['01. symbol']);
         console.log(res['Global Quote']['01. symbol']);
-        var open = $('<p>').text("Open: $" + res['Global Quote']['02. open']);
+        var openval = (res['Global Quote']['02. open']).slice(0,6);
+        var open = $('<p>').html("Open: $" + openval);
         console.log("open: " + res['Global Quote']['02. open']);
-        var high = dataPoint.text(("High: $" + res['Global Quote']['03. high']));
+        var highval = (res['Global Quote']['03. high']).slice(0,6);
+        var high = $('<p>').html("High: $" + highval);
         console.log("high: " + res['Global Quote']['03. high']);
-        var low = $('<p>').text("Low: $" + res['Global Quote']['04. low']);
+        var lowval = (res['Global Quote']['04. low']).slice(0,6)
+        var low = $('<p>').html("Low: $" + lowval);
         console.log("price: " + res['Global Quote']['04. low']);
-        var price = $('<p>').text("$"+res['Global Quote']['05. price']);
+        var priceval = (res['Global Quote']['05. price']).slice(0,6);
+        var price = $('<p>').text("$" + priceval);
+        console.log(priceval)
         console.log("current price: " + res['Global Quote']['05. price']);
-        var lastTradingDay = $('<p>').text("Last Trading Day: " + res['Global Quote']['07. latest trading day']);
+        var lastTradingDay = $('<p>').html("Last Trading Day: " + res['Global Quote']['07. latest trading day']);
         console.log("last trading day: " + res['Global Quote']['07. latest trading day']);
         dataPoint.append(symbol,open,high,low,lastTradingDay);
         dataPointPrice.append(price);
         $('#data').append(dataPoint);
         $('#currentPrice').append(dataPointPrice);
-        if ((res['Global Quote']['05. price']) > (res['Global Quote']['02. open'])) {
+        if ( priceval > openval) {
           $("#currentPrice").addClass("up");
           $("#arrow").append('<img id="greenArrow" src="assets/upArrow.png"/>');
        } else {
@@ -66,9 +71,11 @@ function getStockNews(ticker){
       var newsUrl = (data.response.docs[0].web_url)
       for (let i = 0; i < 5; i++){
           var newsResult = (data.response.docs[i].abstract)
-          var headline = (data.response.docs[i].headline.main+": ")
-          var newsResultDiv = $('<p>').text(newsResult).append('<a href="' + newsUrl + '"> Read More...</a>')
-          $('#newsArticles').append(newsResultDiv)
+          var headline = (data.response.docs[i].headline.main)
+          console.log(headline)
+          var newsresultDiv = $('<h3>').text(headline)
+          var newsResultP = $('<p>').text(newsResult).append('<a href="' + newsUrl + '"> Read More...</a>')
+          $('#newsArticles').append(newsresultDiv, newsResultP)
       }
   });
 }
