@@ -6,6 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>Stock Info and News</title>
 
+      <link rel="shortcut icon" type="image/png" href="/assets/growth.png"/>
       <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.0/css/bulma.css"/>
       <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
@@ -16,7 +17,7 @@
     <div class= "container is-desktop" id="total">
       <div class= "container is-fluid"> 
         <div class="tile is-parent">
-          <article class="tile is-parent notification is-primary">
+          <article class="tile is-parent notification header is-primary">
             <p class="title" id="title">Stock Information and News App</p>
           </article>
         </div>
@@ -29,6 +30,7 @@
               <div class="field">
                 <div class="control">
                   <input class="input is-info" type="text" id="userInput" placeholder="Enter Stock Symbol">
+                  <p class="helpLink"><a href="https://en.wikipedia.org/wiki/NASDAQ-100#Components">Need help with stock symbols?</a></p>
                 </div class= "container is-fluid">
                 <button class="button is-info is-rounded" id="searchButton">Get Quote</button>
               </div>
@@ -74,6 +76,11 @@
       </div>
      </div>
     </div> 
+    <footer class="footer">
+      <div class="container">
+        <span class="text-muted">&copy; 2020 | ***Whatever New App Name Is HERE***<br /><span class="attribute">Icons made by <a href="https://www.flaticon.com/authors/ultimatearm" title="ultimatearm">ultimatearm</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></span></span>
+      </div>
+    </footer>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script src="js/script.js"></script>
