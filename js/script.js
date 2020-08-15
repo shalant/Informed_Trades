@@ -1,8 +1,10 @@
+//set global variables for use later
 var stockSearch = document.querySelector('#searchButton');
 var fq = "business";
 var nytApiKey = "0xtfC1lrtqDdKvSdw4AW74VGe87ACQAb";
 var alphaAPIKey = "1R7O28U5BHPJZSE7";
 
+//API call for alphavantage
 function getStockInfo(ticker) {
   var queryURL = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" + ticker + "&apikey=" + alphaAPIKey
  
@@ -56,12 +58,13 @@ function getStockInfo(ticker) {
 });
 }
 
+//nytimes API call
 function getStockNews(ticker){
   var query = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + ticker + "&fq=" + fq + "&api-key=" + nytApiKey;
   $.get(query, function (data, status) {
       $('#newsArticles').empty();
       var newsUrl = (data.response.docs[0].web_url)
-      for (let i = 0; i < data.response.docs.length; i++){
+      for (let i = 0; i < 5; i++){
           var newsResult = (data.response.docs[i].abstract)
           var headline = (data.response.docs[i].headline.main+": ")
           var newsResultDiv = $('<p>').text(newsResult).append('<a href="' + newsUrl + '"> Read More...</a>')
