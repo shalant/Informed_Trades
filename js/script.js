@@ -1,14 +1,15 @@
 var stockSearch = document.querySelector('#searchButton');
 var fq = "business";
-var apiKey = "0xtfC1lrtqDdKvSdw4AW74VGe87ACQAb";
+var nytApiKey = "0xtfC1lrtqDdKvSdw4AW74VGe87ACQAb";
+var alphaAPIKey = "1R7O28U5BHPJZSE7";
 
 function getStockInfo(ticker) {
-    var queryURL = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" + ticker + "&apikey=1R7O28U5BHPJZSE7"
-
-    $.ajax({
-      url: queryURL,
-      method: "GET",
-    }).then(function (res) {
+  var queryURL = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" + ticker + "&apikey=" + alphaAPIKey
+ 
+  $.ajax({
+    url: queryURL,
+    method: "GET",
+  }).then(function (res) {
       $('#currentPrice').empty();
       $('#data').empty();
       $('#companyName').empty();
@@ -33,45 +34,48 @@ function getStockInfo(ticker) {
         dataPointPrice.append(price);
         $('#data').append(dataPoint);
         $('#currentPrice').append(dataPointPrice);
-
         if ((res['Global Quote']['05. price']) > (res['Global Quote']['02. open'])) {
           $("#currentPrice").addClass("up");
           $("#arrow").append('<img id="greenArrow" src="assets/upArrow.png"/>');
        } else {
           $("#currentPrice").addClass("down");
-          $("#arrow").append('<img id="greenArrow" src="assets/downArrow.png"/>');
+          $("#arrow").append('<img id="redArrow" src="assets/downArrow.png"/>');
        }
 
-       $("#companyName").append(ticker);
-      });
+    var queryCompanyNameURL = "https://www.alphavantage.co/query?function=OVERVIEW&symbol=" + ticker + "&interval=5min&apikey=" + alphaAPIKey
+    
+    $.ajax({
+        url: queryCompanyNameURL,
+        method: "GET",
+    }).then(function (res) {
+        console.log(res.Name);
+        var companyName = (res.Name) 
+        var companyNameDiv = $('<p>').text(companyName)
+        $('#companyName').append(companyNameDiv)
+    });
+});
 }
 
 function getStockNews(ticker){
-  var query = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + ticker + "&fq=" + fq + "&api-key=" + apiKey;
+  var query = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + ticker + "&fq=" + fq + "&api-key=" + nytApiKey;
   $.get(query, function (data, status) {
       $('#newsArticles').empty();
       var newsUrl = (data.response.docs[0].web_url)
-      console.log(data);
-      console.log(data.response.docs.length);
-      console.log(data.response.docs[0].web_url);
-      for (let i = 0; i < 5; i++){
-          console.log("Read This Article: " + data.response.docs[i])
+      for (let i = 0; i < data.response.docs.length; i++){
           var newsResult = (data.response.docs[i].abstract)
           var headline = (data.response.docs[i].headline.main+": ")
-          var newsResultDiv = $('<div>').text(headline).append(newsResult).append('<a href="' + newsUrl + '">Read More...</a>')
+          var newsResultDiv = $('<p>').text(newsResult).append('<a href="' + newsUrl + '"> Read More...</a>')
           $('#newsArticles').append(newsResultDiv)
       }
   });
 }
 
 $(stockSearch).on('click', function (event) {
-    // Preventing the button from trying to submit the form
-    console.log('Search Button Clicked');
-    event.preventDefault();
-    // Getting ticker symbol from search input field
-    var ticker = $('#userInput').val().trim();
-    console.log(ticker);
+  // Preventing the button from trying to submit the form
+  event.preventDefault();
+  // Getting ticker symbol from search input field
+  var ticker = $('#userInput').val().trim();
 
-    getStockInfo(ticker);
-    getStockNews(ticker);
+  getStockInfo(ticker);
+  getStockNews(ticker);
 });
