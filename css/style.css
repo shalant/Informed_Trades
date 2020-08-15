@@ -8,7 +8,7 @@ html{
 body {
    background-image: linear-gradient( white, #00d1b2);
    min-height:100%;
-   margin-bottom: 64px;
+   margin-bottom: 63px;
 }
 /* classees -------------------------------- */
 .title {
