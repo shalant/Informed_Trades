@@ -12,6 +12,7 @@ function getStockInfo(ticker) {
       $('#currentPrice').empty();
       $('#data').empty();
       $('#companyName').empty();
+      $('#arrow').empty()
 
       console.log(res);
         var dataPoint = $('<div>')
@@ -23,7 +24,7 @@ function getStockInfo(ticker) {
         var high = dataPoint.text(("High: $" + res['Global Quote']['03. high']));
         console.log("high: " + res['Global Quote']['03. high']);
         var low = $('<p>').text("Low: $" + res['Global Quote']['04. low']);
-        console.log("price: " + res['Global Quote']['03. high']);
+        console.log("price: " + res['Global Quote']['04. low']);
         var price = $('<p>').text("$"+res['Global Quote']['05. price']);
         console.log("current price: " + res['Global Quote']['05. price']);
         var lastTradingDay = $('<p>').text("Last Trading Day: " + res['Global Quote']['07. latest trading day']);
@@ -33,7 +34,7 @@ function getStockInfo(ticker) {
         $('#data').append(dataPoint);
         $('#currentPrice').append(dataPointPrice);
 
-        if (price > open) {
+        if ((res['Global Quote']['05. price']) > (res['Global Quote']['02. open'])) {
           $("#currentPrice").addClass("up");
           $("#arrow").append('<img id="greenArrow" src="assets/upArrow.png"/>');
        } else {
