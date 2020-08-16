@@ -16,26 +16,26 @@ function getStockInfo(ticker) {
     $('#companyName').empty();
     $('#arrow').empty();
 
-    console.log(res);
+    //console.log(res);
     var dataPoint = $('<div>')
     var dataPointPrice = $('<div>')
     var symbol = $('<p>').html("Ticker: " + res['Global Quote']['01. symbol']);
-    console.log(res['Global Quote']['01. symbol']);
+    //console.log(res['Global Quote']['01. symbol']);
     var openval = (res['Global Quote']['02. open']).slice(0, 6);
     var open = $('<p>').html("Open: $" + openval);
-    console.log("open: " + res['Global Quote']['02. open']);
+    //console.log("open: " + res['Global Quote']['02. open']);
     var highval = (res['Global Quote']['03. high']).slice(0, 6);
     var high = $('<p>').html("High: $" + highval);
-    console.log("high: " + res['Global Quote']['03. high']);
+    ///console.log("high: " + res['Global Quote']['03. high']);
     var lowval = (res['Global Quote']['04. low']).slice(0, 6)
     var low = $('<p>').html("Low: $" + lowval);
-    console.log("price: " + res['Global Quote']['04. low']);
+    //console.log("price: " + res['Global Quote']['04. low']);
     var priceval = (res['Global Quote']['05. price']).slice(0, 6);
     var price = $('<p>').text("$" + priceval);
-    console.log(priceval)
-    console.log("current price: " + res['Global Quote']['05. price']);
+    //console.log(priceval)
+    //console.log("current price: " + res['Global Quote']['05. price']);
     var lastTradingDay = $('<p>').html("Last Trading Day: " + res['Global Quote']['07. latest trading day']);
-    console.log("last trading day: " + res['Global Quote']['07. latest trading day']);
+    //console.log("last trading day: " + res['Global Quote']['07. latest trading day']);
     dataPoint.append(symbol, open, high, low, lastTradingDay);
     dataPointPrice.append(price);
     $('#data').append(dataPoint);
@@ -65,7 +65,7 @@ function getStockNews(ticker) {
   $.get(query, function (data, status) {
     $('#newsArticles').empty();
     var newsUrl = (data.response.docs[0].web_url)
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 5; i++) {
       var newsResult = (data.response.docs[i].abstract)
       var headline = (data.response.docs[i].headline.main)
       console.log(headline)
@@ -85,11 +85,17 @@ $(stockSearch).on('click', function (event) {
     tempData.push(ticker);
     localStorage.setItem("ticker", JSON.stringify(tempData));
     var recentsearches = $('#local')
+    // for (let i = 0; i < tempData.length; i++) {
+    //   var dataRecent = $('<a href="#" class="recentSearch btn btn-light btn-block">').text(tempData)
+    //   console.log(dataRecent.text)
+    //   var dataRecentInfo = dataRecent.text(tempData[i]);
+    //   console.log(dataRecentInfo)
+    //   recentsearches.append(dataRecent);
     for (let i = 0; i < tempData.length; i++) {
-      var dataRecent = $('<a href="#" class="recentSearch btn btn-light btn-block">').text(tempData)
-      console.log(dataRecent.text)
-      var dataRecentInfo = dataRecent.text(tempData[i]);
-      console.log(dataRecentInfo)
+      var dataRecent = $('<a href="#" class="recentSearch btn btn-light btn-block">' + tempData[i] + '</a>')
+      console.log(tempData[i])
+      //var dataRecentInfo = dataRecent.text(tempData[i]);
+      //console.log(dataRecentInfo)
       recentsearches.append(dataRecent);
     }
   }
@@ -100,15 +106,25 @@ $(stockSearch).on('click', function (event) {
     getStockInfo(tickerClick);
     getStockNews(tickerClick);
   });
-  
+
   getStockInfo(ticker);
   getStockNews(ticker);
 });
 
-  var input = document.getElementById("userInput");
-input.addEventListener("keyup", function(event) {
+$('#clearBtn').click(function () {
+  $('#clearBtn')
+    .val('')
+    .removeAttr('btn')
+    .removeAttr('btn-light')
+    .removeAttr('btn-block');
+  localStorage.clear()
+  $(".recentSearch").empty();
+});
+
+var input = document.getElementById("userInput");
+input.addEventListener("keyup", function (event) {
   if (event.keyCode === 13) {
-   event.preventDefault();
-   document.getElementById("searchButton").click();
+    event.preventDefault();
+    document.getElementById("searchButton").click();
   }
 });
