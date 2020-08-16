@@ -1,4 +1,4 @@
-![Image of Businesswoman](https://github.com/joolyen/Informed_Trades/images/businesswoman)
+<img src="images/businesswoman.png">
 
 #Project Title: Welcome to Informed Trades, the next big thing in investing.
 
