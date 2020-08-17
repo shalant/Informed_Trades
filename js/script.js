@@ -11,15 +11,13 @@ function getStockInfo(ticker) {
     url: queryURL,
     method: "GET",
   }).then(function (res) {
+    //clearing out data fields
     $('#currentPrice').empty();
     $('#data').empty();
     $('#companyName').empty();
     $('#arrow').empty();
   
-   
-
-  
-
+    //getting data from alpha advantage
     //console.log(res);
     var dataPoint = $('<div>')
     var dataPointPrice = $('<div>')
@@ -40,23 +38,26 @@ function getStockInfo(ticker) {
     //console.log("current price: " + res['Global Quote']['05. price']);
     var lastTradingDay = $('<p>').html("Last Trading Day: " + res['Global Quote']['07. latest trading day']);
     //console.log("last trading day: " + res['Global Quote']['07. latest trading day']);
+    //adding important data points for various divs
     dataPoint.append(symbol, open, high, low);
     dataPointPrice.append(price);
     $('#data').append(dataPoint);
     $('#currentPrice').append(dataPointPrice);
+    //setting conditions for the arrow
     if (priceval > openval) {
       $("#currentPrice").addClass("up");
-      $("#arrow").append('<img id="greenArrow" src="assets/upArrow.png" style="width60px;height:80px;"/>');
+      $("#arrow").append('<img id="greenArrow" src="assets/upArrow.png" style="width:60px;height:80px;"/>');
     } else {
       $("#currentPrice").addClass("down");
-      $("#arrow").append('<img id="redArrow" src="assets/downArrow.png"style="width60px;height:80px;"/>');
+      $("#arrow").append('<img id="redArrow" src="assets/downArrow.png"style="width:60px;height:80px;"/>');
     }
+    //2nd AJAX call to populate the company name tile
     var queryCompanyNameURL = "https://www.alphavantage.co/query?function=OVERVIEW&symbol=" + ticker + "&interval=5min&apikey=" + alphaAPIKey
     $.ajax({
       url: queryCompanyNameURL,
       method: "GET",
     }).then(function (res) {
-      console.log(res.Name);
+      //console.log(res.Name);
       var companyName = (res.Name)
       var companyNameDiv = $('<p>').text(companyName)
       $('#companyName').append(companyNameDiv)
@@ -69,6 +70,7 @@ function getStockNews(ticker) {
   $.get(query, function (data, status) {
     $('#newsArticles').empty();
     var newsUrl = (data.response.docs[0].web_url)
+    //getting 5 articles listed in the div
     for (let i = 0; i < 5; i++) {
       var newsResult = (data.response.docs[i].abstract)
       var headline = (data.response.docs[i].headline.main)
@@ -88,7 +90,7 @@ $(stockSearch).on('click', function (event) {
     var tempData = JSON.parse(localStorage.getItem("ticker")) || [];
     tempData.push(ticker);
     localStorage.setItem("ticker", JSON.stringify(tempData));
-    var recentsearches = $('#local')
+    var recentsearches = $('#local');
    
     $("#local").empty();
     // for (let i = 0; i < tempData.length; i++) {
@@ -99,7 +101,7 @@ $(stockSearch).on('click', function (event) {
     //   recentsearches.append(dataRecent);
     for (let i = 0; i < tempData.length; i++) {
       var dataRecent = $('<a href="#" class="recentSearch button is-rounded is-block">' + tempData[i] + '</a>')
-      console.log(tempData[i])
+      //console.log(tempData[i])
       //var dataRecentInfo = dataRecent.text(tempData[i]);
       //console.log(dataRecentInfo)
       recentsearches.append(dataRecent);
@@ -117,6 +119,7 @@ $(stockSearch).on('click', function (event) {
   getStockNews(ticker);
 });
 
+//create a clear button
 $('#clearBtn').click(function () {
   $('#clearBtn')
     .val('')
@@ -127,7 +130,7 @@ $('#clearBtn').click(function () {
   $(".recentSearch").remove();
 
 });
-
+//enabling the enter key for search button
 var input = document.getElementById("userInput");
 input.addEventListener("keyup", function (event) {
   if (event.keyCode === 13) {
