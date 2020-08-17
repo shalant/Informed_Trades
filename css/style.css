@@ -4,11 +4,17 @@ html{
    position: relative;
    min-height: 100%;
    background-color:#00d1b2;
+   /* background-color: #36454f; */
 }
 body {
    background-image: linear-gradient( white, #00d1b2);
+   /* background-image: url(../assets/background.png); */
    min-height:100%;
    margin-bottom: 63px;
+   background-position: center;
+   background-repeat: repeat-y;
+   background-size: cover;
+   height: 100%;
 }
 /* classees -------------------------------- */
 .title {
@@ -52,14 +58,24 @@ body {
 .attribute {
    font-size:.6em;color:#999;
 }
+.tile {
+   padding: 1em;
+}
 .tile.is-ancestor {
    margin: 0 0 inherit 0;
 }
 
 .newsArticle a {
-   color:#3273dc;
+   color:#00d1b2;
 }
 
+.recentSearch {
+   display:block;
+   width: 100%;
+   margin-top: 1em;
+   color:#3273dc;
+   align-content: center;
+}
 /* IDs -------------------------------------- */
 #total {
    max-width: 1200px;
@@ -73,15 +89,11 @@ body {
 
 #data {
    font-family: 'Roboto Mono', monospace;
+   font-weight: 600;
 }   
 
-#border {
-   border-color:#3273dc;
-   border-width: 1em;
-}
-
 #articles {
-   color: #00d1b2;
+   color: #3273dc;
 }
 
 #companyName {
@@ -104,12 +116,12 @@ body {
 }
 
 #newsArticles h3 {
-      color:#3273dc;
+      color:#00d1b2;
       margin-bottom: .1em;
 }
 
 #arrow {
-   margin:1em auto;
+   margin:1em 30%;
 }
 
 #userInput {
@@ -118,9 +130,33 @@ body {
 }
 
 #title {
+   padding-top: .3em;
    font-weight: 750;
    text-align: center;
    color: #00d1b2;
    font-family: 'Raleway', sans-serif;
    font-size: 500%;
+}
+
+#byline {
+   font-family: 'Raleway', sans-serif;
+   color: #3273dc;
+   text-align: center;
+   font-size: 200%;
+   font-weight: 500;
+   margin: -1em 0 -.5em;
+}
+
+#recentSearch {
+   font-size: 105%;
+}
+
+#clearBtn {
+   margin-top: 1em;
+   display:block;
+   width: 100%;
+}
+
+#local {
+   text-transform: uppercase;
 }
