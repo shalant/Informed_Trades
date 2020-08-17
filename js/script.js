@@ -15,6 +15,10 @@ function getStockInfo(ticker) {
     $('#data').empty();
     $('#companyName').empty();
     $('#arrow').empty();
+  
+   
+
+  
 
     //console.log(res);
     var dataPoint = $('<div>')
@@ -36,16 +40,16 @@ function getStockInfo(ticker) {
     //console.log("current price: " + res['Global Quote']['05. price']);
     var lastTradingDay = $('<p>').html("Last Trading Day: " + res['Global Quote']['07. latest trading day']);
     //console.log("last trading day: " + res['Global Quote']['07. latest trading day']);
-    dataPoint.append(symbol, open, high, low, lastTradingDay);
+    dataPoint.append(symbol, open, high, low);
     dataPointPrice.append(price);
     $('#data').append(dataPoint);
     $('#currentPrice').append(dataPointPrice);
     if (priceval > openval) {
       $("#currentPrice").addClass("up");
-      $("#arrow").append('<img id="greenArrow" src="assets/upArrow.png"/>');
+      $("#arrow").append('<img id="greenArrow" src="assets/upArrow.png" style="width60px;height:80px;"/>');
     } else {
       $("#currentPrice").addClass("down");
-      $("#arrow").append('<img id="redArrow" src="assets/downArrow.png"/>');
+      $("#arrow").append('<img id="redArrow" src="assets/downArrow.png"style="width60px;height:80px;"/>');
     }
     var queryCompanyNameURL = "https://www.alphavantage.co/query?function=OVERVIEW&symbol=" + ticker + "&interval=5min&apikey=" + alphaAPIKey
     $.ajax({
@@ -85,6 +89,8 @@ $(stockSearch).on('click', function (event) {
     tempData.push(ticker);
     localStorage.setItem("ticker", JSON.stringify(tempData));
     var recentsearches = $('#local')
+   
+    $("#local").empty();
     // for (let i = 0; i < tempData.length; i++) {
     //   var dataRecent = $('<a href="#" class="recentSearch btn btn-light btn-block">').text(tempData)
     //   console.log(dataRecent.text)
@@ -92,7 +98,7 @@ $(stockSearch).on('click', function (event) {
     //   console.log(dataRecentInfo)
     //   recentsearches.append(dataRecent);
     for (let i = 0; i < tempData.length; i++) {
-      var dataRecent = $('<a href="#" class="recentSearch btn btn-light btn-block">' + tempData[i] + '</a>')
+      var dataRecent = $('<a href="#" class="recentSearch button is-rounded is-block">' + tempData[i] + '</a>')
       console.log(tempData[i])
       //var dataRecentInfo = dataRecent.text(tempData[i]);
       //console.log(dataRecentInfo)
@@ -118,7 +124,8 @@ $('#clearBtn').click(function () {
     .removeAttr('btn-light')
     .removeAttr('btn-block');
   localStorage.clear()
-  $(".recentSearch").empty();
+  $(".recentSearch").remove();
+
 });
 
 var input = document.getElementById("userInput");
@@ -128,3 +135,4 @@ input.addEventListener("keyup", function (event) {
     document.getElementById("searchButton").click();
   }
 });
+

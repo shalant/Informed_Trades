@@ -4,9 +4,9 @@
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>Stock Info and News</title>
-      <link rel="shortcut icon" href="assets/graphFav.ico" type="image/x-icon" />
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      <title>Informed Trades</title>
+      <!-- <link rel="shortcut icon" href="assets/graphFav.ico" type="image/x-icon" />
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
       <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.0/css/bulma.css"/>
       <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
@@ -19,6 +19,7 @@
         <div class="row">
           <article class="row">
             <p class="title" id="title">Informed Trades</p>
+            <p id="byline">Stock Quotes & News Articles for the Educated Investor</p>
           </article>
         </div>
       </div>
@@ -29,8 +30,10 @@
             <article class="tile is-child box notification is-primary">
               <div class="field">
                 <div class="control">
-                  <input class="input is-info" type="text" id="userInput" placeholder="Enter Stock Symbol">
-                  <p class="helpLink"><a href="https://en.wikipedia.org/wiki/NASDAQ-100#Components" target="_blank">Need help with stock symbols?</a></p>
+                  <input class="input is-info" type="text" id="userInput" placeholder="Enter Stock">
+                  <p class="helpLink">
+                    <a href="https://en.wikipedia.org/wiki/NASDAQ-100#Components" target="_blank">Need help with stock symbols?</a>
+                  </p>
                 </div class= "container is-fluid">
                 <button class="button is-info is-rounded" id="searchButton">Get Quote</button>
               </div>
@@ -51,14 +54,14 @@
               </article>
           </div>
         </div>
-      <div class="tile is-parent">
-        <div class="tile is-vertical">
-          <div class="tile">    
+      <div class="tile is-ancestor">
+        <div class="tile is-vertical is-ancestor">
+          <div class="tile is-ancestor">    
 <!-- News articles ------>
             <div class="tile is-parent is-9">
-              <article class="tile is-child box notification is-light">
+              <article class="tile is-child box notification is-light" id="newsBox">
                 <div class="content">
-                  <p class="title" id="articles">News Articles</p>
+                  <p class="title" id="articles">Latest News Articles</p>
                   <div id = "newsArticles"></div>
                 </div>
               </article>
@@ -69,8 +72,9 @@
                 <p class="title">Data</p>
                 <div id="data"></div>
                 <div id="arrow"></div>
-                <div id="local">Recent Searches</div>
-                <button id="clearBtn">Clear Searches</button>
+                <div class="title" id="recentSearch">Recent Searches</div>
+                <div class="buttons are-medium" id="local"></div>
+                <button class="button is-primary is-rounded" id="clearBtn">Clear Searches</button>
               </article>
             </div>
           </div>
@@ -85,7 +89,8 @@
     </footer>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script src="js/script.js"></script>
   <script src="js/autocomplete.js"></script>
+  <script src="js/script.js"></script>
+
   </body>
 </html>
