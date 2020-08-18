@@ -16,7 +16,7 @@ function getStockInfo(ticker) {
     $('#data').empty();
     $('#companyName').empty();
     $('#arrow').empty();
-  
+    
     //getting data from alpha advantage
     //console.log(res);
     var dataPoint = $('<div>')
@@ -43,7 +43,9 @@ function getStockInfo(ticker) {
     dataPointPrice.append(price);
     $('#data').append(dataPoint);
     $('#currentPrice').append(dataPointPrice);
+
     //setting conditions for the arrow
+
     if (priceval > openval) {
       $("#currentPrice").addClass("up");
       $("#arrow").append('<img id="greenArrow" src="assets/upArrow.png" style="width:60px;height:80px;"/>');
@@ -51,7 +53,9 @@ function getStockInfo(ticker) {
       $("#currentPrice").addClass("down");
       $("#arrow").append('<img id="redArrow" src="assets/downArrow.png"style="width:60px;height:80px;"/>');
     }
+
     //2nd AJAX call to populate the company name tile
+
     var queryCompanyNameURL = "https://www.alphavantage.co/query?function=OVERVIEW&symbol=" + ticker + "&interval=5min&apikey=" + alphaAPIKey
     $.ajax({
       url: queryCompanyNameURL,
@@ -69,14 +73,17 @@ function getStockNews(ticker) {
   var query = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + ticker + "&fq=" + fq + "&api-key=" + nytApiKey;
   $.get(query, function (data, status) {
     $('#newsArticles').empty();
+
     var newsUrl = (data.response.docs[0].web_url)
     //getting 5 articles listed in the div
+
     for (let i = 0; i < 5; i++) {
       var newsResult = (data.response.docs[i].abstract)
       var headline = (data.response.docs[i].headline.main)
+      var newsUrl = (data.response.docs[i].web_url)
       console.log(headline)
       var newsresultDiv = $('<h3>').text(headline)
-      var newsResultP = $('<p>').text(newsResult).append('&nbsp;<a href="' + newsUrl + '">Read More...</a>')
+      var newsResultP = $('<p>').text(newsResult).append('&nbsp;<a target="_blank" href="' + newsUrl + '">Read More...</a>')
       $('#newsArticles').append(newsresultDiv, newsResultP)
     }
   });
@@ -138,4 +145,3 @@ input.addEventListener("keyup", function (event) {
     document.getElementById("searchButton").click();
   }
 });
-
