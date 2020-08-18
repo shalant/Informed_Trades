@@ -3,22 +3,13 @@
 html{
    position: relative;
    min-height: 100%;
-   /* background-color:#00d1b2; */
    background-color: #36454f;
-   /* background-color: #242526; */
 }
 body {
-   /* background-image: linear-gradient( white, #00d1b2); */
-   /* background-image: url(../assets/background2.png); */
-   /* background-image: radial-gradient(#00594d, #36454f); */
-
    min-height:100%;
-   margin-bottom: 63px;
-   background-position: center;
-   background-repeat: no-repeat;
-   background-size: cover;
-   height: 100%;
+   margin-bottom: 63px; 
 }
+
 /* classees -------------------------------- */
 .title {
    font-family: 'Raleway', sans-serif;
