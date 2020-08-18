@@ -4,6 +4,9 @@
 
 ### Informed Trades empower users by combining basic stock info with contemporary news stories.
 
+### User story: As a user, I want to know how my investments are performing and what the market conditions are,
+                so that I can make informed trades.
+
 ![demo GIF](/images/Informed_Trades.gif)
 
 ### Installation instructions: download from https://github.com/joolyen/Informed_Trades
