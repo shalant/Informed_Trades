@@ -1,4 +1,5 @@
-![businesswoman|512x397](/images/businesswoman.png)
+
+<img src="assets/businesswoman.png">
 
 # Project Title: Welcome to Informed Trades, the next big thing in investing.
 
