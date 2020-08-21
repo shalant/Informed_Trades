@@ -29,3 +29,13 @@
 
 ### Authors and acknowledgement:
 #### Caroline Twyman, Julian Ivey, Jon Misner, and Doug Rosenberg
+
+### Retrospective:
+#### Group 8’s project went swimmingly. We started off with a couple inspired ideas and spent a few days researching the requisite API’s Ultimately we decided to go with something easier and make it cool. Caroline Twyman and Jon Misner discovered that Alpha Vantage was reasonable. Doug Rosenberg came up with the idea to combine it with NY Times API.
+
+#### Jon took a ton of initiative and quickly set up a nice framework with html, CSS, and the novel Bulma CSS library. Julian Ivey quickly took the lead getting us up and running with Git Hub. Doug started working the NY Times API. Caroline and Julian quickly started building up the javascript aspects, adding more and more elements. Julian had a key role as a manager per se, bringing some important real-world experience to the table. Jon kept the front-end stuff running smoothly with the various functionality as we built. Caroline kept adding tons of useful javascript. Doug took the lead in setting up the presentation.
+
+#### All this happened as life was lived, and the inevitable obstacles of childcare, jobs, travel, work, and hurricanes. The group showed resilience in overcoming these and seamlessly filled in the gaps.
+
+#### In the end, we were all very pleased with how the group dynamic worked. It was even fun and all of us learned a ton. We used the consensus model and were all flexible with details. All in all, it was a great project.
+
