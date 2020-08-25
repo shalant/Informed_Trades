@@ -10,9 +10,9 @@
 
 ![demo GIF](/images/Informed_Trades.gif)
 
-### Gitpages link: https://joolyen.github.io/Informed_Trades/
+### Gitpages link: https://shalant.github.io/Informed_Trades/
 
-### Installation instructions: download from https://github.com/joolyen/Informed_Trades
+### Installation instructions: download from https://github.com/shalant/Informed_Trades
 
 ### Features: 
 
